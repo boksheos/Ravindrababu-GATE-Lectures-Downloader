@@ -153,7 +153,7 @@ try:
             print(SubTitle)
             SubTitle = "E:\Coding\\test\\" + level1 + "\\" + SubTitle
             try:
-                os.makedirs(SubTitle)
+                makedirs(SubTitle)
             except:
                 pass
             links = browser.find_elements_by_partial_link_text('')
@@ -180,6 +180,8 @@ try:
                 listOfLinks.append(x)
             # print(listOfLinks)
             totalLinks = len(listOfLinks)
+            download(durl, fnameWithDir)
+
             i = 0
 
             # For each link, get the video link
@@ -202,33 +204,6 @@ try:
                 title = browser.title
                 result = None
                 counterForLink = 0
-                while result is None:
-                    try:
-                        (x, y) = pyautogui.position()
-                        x = x + 52
-                        y = y - 62
-                        pyautogui.rightClick()
-                        # (x, y) = pyautogui.locateCenterOnScreen("view frame source.bmp")
-                        pyautogui.moveTo(x, y, 0.1)
-                        pyautogui.click()
-                        window_after = browser.window_handles[1]
-                        result = 'done and got the link'
-                    except:
-                        counterForLink += 1
-                        if counterForLink > 20:
-                            raise Exception
-
-                        time.sleep(5)
-                pyautogui.moveTo(originalx, originaly, 0.01)
-                browser.switch_to.window(window_after)
-                tag = (browser.find_elements_by_css_selector('body'))[0].text
-                tag = str(tag)
-                index = -1
-                httpindex = mainlink.find('https')
-                mp4index = mainlink.rfind('mp4')
-                mainlink = mainlink[httpindex:mp4index + 3]
-                title = str(i) + title.split(':')[1]
-                print(title)
                 browser.close()
                 browser.switch_to.window(mainWindow)
                 listOfURL.append(mainlink)
