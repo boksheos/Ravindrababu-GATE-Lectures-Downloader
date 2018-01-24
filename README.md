@@ -2,7 +2,7 @@
 This script helps downloading videos from the site 'eclassesbyravindrababu.com'.
 It uses python 3 and has dependencies to be easily resolved by the user. one of such dependency is selenium.
 
-# Usage (linux):
+# Usage:
 1. Install IDM.
 1. The script needs your username and password.
 1. The first two lines needs to be edited by the user and they need to assign uname, the username, and pword, the password.
